@@ -5,13 +5,11 @@
 ## preprocessing
 ##
 
-import matplotlib.pyplot as plt
-import matplotlib.image as imread
+import matplotlib.image as plt_img
 import numpy as np
 
-
 def image_to_array(image):
-    image = imread.imread(image)
+    image = plt_img.imread(image)
     # print(image.shape)
     return image
 
