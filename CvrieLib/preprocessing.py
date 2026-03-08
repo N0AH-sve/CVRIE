@@ -36,5 +36,10 @@ def preprocess_image(image, size):
     print(image.shape)
     return image
 
+def flatten_image_array(matrix_array):
+    n_samples = matrix_array.shape[0]
+    flat_matrix_array =  matrix_array.reshape(n_samples, -1)
+    return flat_matrix_array
+
 def test():
     return "preprocessing"
