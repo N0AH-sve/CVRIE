@@ -106,19 +106,25 @@ def resize_image(image, size_x, size_y):
     return bilinear_interpolation(image, (size_x, size_y))
 
 
-def preprocess_image(image, size=(224, 224)):
-    """    Divide the image into its gray scale values.
+def normalize_image(image):
+    """     Normalize the image by dividing each pixel value by the maximum pixel value.
     Args:
         image (numpy array): Matrice of points of the image.
-        size (tuple): New size wanted.
     Returns:
-        array: Matrice of points of the image in gray scale.
+        Matrice of points of the image normalized.
     """
+    if image.max() > 1.0:
+        image /= 255.0
+    return image
+
+
+# This function is no longer used, but it can be useful for future use if we want to add more preprocessing steps
+# It was replaced by a sklearn pipeline
+def preprocess_image(image, size=(224, 224)):
     image = image_to_array(image)
     image = divide_gray_scale(image)
     image = resize_image(image, size[0], size[1])
-    if image.max() > 1.0:
-        image /= 255.0
+    image = normalize_image(image)
     return image
 
 
