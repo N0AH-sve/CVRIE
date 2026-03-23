@@ -2,3 +2,4 @@ myenvCVRIE/
 .xml
 *.pdf
 .idea/
+.venv/
